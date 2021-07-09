@@ -87,16 +87,13 @@
 
   .#{$prefix-cls}-toolbar {
     user-select: none;
-    position: absolute;
     overflow: hidden;
-    bottom: 8px;
-    left: 50%;
-    transform: translate(-50%);
     opacity: 0.9;
-    display: flex;
+    display: inline-flex;
     background-color: rgb(45, 45, 45);
     border-radius: 4px;
     padding: 0;
+    margin-top: 1em;
 
     .toolbar-btn {
       user-select: none;

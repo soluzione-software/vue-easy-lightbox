@@ -22,11 +22,6 @@
 
   .#{$prefix-cls}-img-title {
     overflow: hidden;
-    position: absolute;
-    left: 50%;
-    bottom: 60px;
-    transform: translate(-50%);
-    max-width: 80%;
     font-size: 12px;
     line-height: 1;
     text-align: center;
@@ -36,6 +31,7 @@
     white-space: nowrap;
     cursor: default;
     transition: opacity 0.15s;
+    margin-top: 1em;
 
     &:hover {
       opacity: 1;

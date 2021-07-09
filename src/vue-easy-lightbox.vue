@@ -45,6 +45,36 @@
             @touchend="handleTouchEnd($event)"
             @load="handleRealImgLoad"
           />
+
+          <div :class="`${prefixCls}-footer-wrapper`">
+            <slot
+              v-if="imgTitle && !titleDisabled && !loading && !loadError"
+              name="title"
+            >
+              <img-title>{{ imgTitle }}</img-title>
+            </slot>
+
+            <slot
+              name="toolbar"
+              :toolbarMethods="{
+                zoomIn,
+                zoomOut,
+                rotate: rotateLeft,
+                rotateLeft,
+                rotateRight,
+                resize
+              }"
+            >
+              <toolbar
+                :prefixCls="prefixCls"
+                :zoomIn="zoomIn"
+                :zoomOut="zoomOut"
+                :rotateLeft="rotateLeft"
+                :rotateRight="rotateRight"
+                :resize="resize"
+              />
+            </slot>
+          </div>
         </div>
       </transition>
 
@@ -96,34 +126,6 @@
           >
             <svg-icon type="close" />
           </div>
-        </slot>
-
-        <slot
-          v-if="imgTitle && !titleDisabled && !loading && !loadError"
-          name="title"
-        >
-          <img-title>{{ imgTitle }}</img-title>
-        </slot>
-
-        <slot
-          name="toolbar"
-          :toolbarMethods="{
-            zoomIn,
-            zoomOut,
-            rotate: rotateLeft,
-            rotateLeft,
-            rotateRight,
-            resize
-          }"
-        >
-          <toolbar
-            :prefixCls="prefixCls"
-            :zoomIn="zoomIn"
-            :zoomOut="zoomOut"
-            :rotateLeft="rotateLeft"
-            :rotateRight="rotateRight"
-            :resize="resize"
-          />
         </slot>
       </div>
     </div>
@@ -581,6 +583,10 @@
       max-width: 85vw;
       max-height: 95vh;
     }
+  }
+
+  .#{$prefix-cls}-footer-wrapper {
+    text-align: center;
   }
 
   /* prev/next/close btns */
